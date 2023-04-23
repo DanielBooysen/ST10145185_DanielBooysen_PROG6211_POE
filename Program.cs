@@ -74,8 +74,18 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
             for (int i = 0; i < nrIngr; i++)
             {
-                Console.WriteLine("Enter the ingredient");
+                Console.WriteLine("Enter the ingredient name");
                 IName[i] = Console.ReadLine();
+                Console.WriteLine("Enter the quantity");
+                IQuantity[i] = Console.ReadLine();
+                Console.WriteLine("Enter the unit of measurement");
+                IUMeasure[i] = Console.ReadLine();
+            }
+
+            for (int i = 0;i < nrSteps; i++)
+            {
+                Console.WriteLine($"Enter step number {i + 1}");
+                SDescr[i] = Console.ReadLine();
             }
         }
 
