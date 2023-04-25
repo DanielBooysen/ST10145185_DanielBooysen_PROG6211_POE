@@ -11,7 +11,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
     {
         private static int nrIngr;
         private static string[] IName;
-        private static string[] IQuantity;
+        private static int[] IQuantity;
         private static string[] IUMeasure;
         private static int nrSteps;
         private static string[] SDescr;
@@ -68,6 +68,9 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
             Console.WriteLine("Enter the number of ingredients in the recipe");
             nrIngr = int.Parse(Console.ReadLine());
+            IName = new string[nrIngr];
+            IQuantity = new int[nrIngr];
+            IUMeasure = new string[nrIngr];
 
             Console.WriteLine("Enter the number of steps in the recipe");
             nrSteps = int.Parse(Console.ReadLine());
@@ -76,10 +79,10 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             {
                 Console.WriteLine("Enter the ingredient name");
                 IName[i] = Console.ReadLine();
-                Console.WriteLine("Enter the quantity");
-                IQuantity[i] = Console.ReadLine();
                 Console.WriteLine("Enter the unit of measurement");
                 IUMeasure[i] = Console.ReadLine();
+                Console.WriteLine("Enter the quantity");
+                IQuantity[i] = int.Parse(Console.ReadLine());
             }
 
             for (int i = 0;i < nrSteps; i++)
