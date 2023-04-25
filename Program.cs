@@ -83,8 +83,10 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 Console.WriteLine($"Ingredient nr.{i + 1}");
                 Console.WriteLine("Enter the ingredient name");
                 IName[i] = Console.ReadLine();
+
                 Console.WriteLine("Enter the unit of measurement");
                 IUMeasure[i] = Console.ReadLine();
+
                 Console.WriteLine("Enter the quantity");
                 IQuantity[i] = int.Parse(Console.ReadLine());
 
