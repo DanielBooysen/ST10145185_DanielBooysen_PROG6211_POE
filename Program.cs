@@ -30,7 +30,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             Console.WriteLine("Welcome to your recipe book!");
             Console.WriteLine("-------------------------------");
             Console.WriteLine("1 - Enter recipe");
-            Console.WriteLine("2 - Display saved recipe");
+            Console.WriteLine("2 - Display recipe");
             Console.WriteLine("3 - Scale recipe");
             Console.WriteLine("4 - Reset recipe");
             Console.WriteLine("5 - Delete recipe");
@@ -104,7 +104,10 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
         public static void DisplayRecipe()
         {
-
+            if (nrIngr == null)
+            {
+                Console.WriteLine("There is no saved recipe, please enter one to display one.");
+            }
         }
 
         public static void ScaleRecipe()
