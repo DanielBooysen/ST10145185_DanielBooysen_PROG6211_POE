@@ -16,6 +16,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
         private static int nrSteps;
         private static string[] SDescr;
         private static string RecipeName;
+        private static Boolean RecipeSaved = false;
 
         public static void Main(string[] args)
         {
@@ -63,6 +64,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
         public static void EnterRecipe()
         {
+            RecipeSaved = true;
             Console.WriteLine("Enter recipe name -->");
             RecipeName = Console.ReadLine();
 
@@ -100,14 +102,40 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
                 Console.WriteLine();
             }
+
+            Menu();
         }
 
         public static void DisplayRecipe()
         {
-            if (nrIngr == null)
+            if (RecipeSaved == false)
             {
-                Console.WriteLine("There is no saved recipe, please enter one to display one.");
+                Console.WriteLine();
+                Console.WriteLine("There is no saved recipe, please enter a recipe to display one.");
+                Menu();
             }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine(RecipeName);
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Ingredients:");
+                for (int i = 0; i  < nrIngr; i++)
+                {
+                    Console.Write(IName[i] + ": ");
+                    Console.Write(IQuantity[i] + " ");
+                    Console.Write(IUMeasure[i] + "\n");
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Steps:");
+                for (int i = 0; i < nrSteps; i++)
+                {
+                    Console.WriteLine(SDescr[i]);
+                }
+            }
+
+            Menu();
         }
 
         public static void ScaleRecipe()
