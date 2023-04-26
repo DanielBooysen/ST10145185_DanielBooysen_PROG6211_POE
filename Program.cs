@@ -133,6 +133,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 {
                     Console.WriteLine(SDescr[i]);
                 }
+                Console.WriteLine();
             }
 
             Menu();
