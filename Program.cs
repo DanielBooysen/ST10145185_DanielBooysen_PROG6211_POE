@@ -151,7 +151,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 Console.WriteLine("Steps:");
                 for (int i = 0; i < nrSteps; i++)
                 {
-                    Console.WriteLine($"1: {SDescr[i]}");
+                    Console.WriteLine($"{i + 1}: {SDescr[i]}");
                 }
                 Console.WriteLine();
             }
