@@ -30,6 +30,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
         {
             int Option;
 
+            Console.WriteLine();
             Console.WriteLine("-------------------------------");
             Console.WriteLine("Welcome to your recipe book!");
             Console.WriteLine("-------------------------------");
@@ -38,6 +39,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             Console.WriteLine("3 - Scale recipe");
             Console.WriteLine("4 - Reset recipe");
             Console.WriteLine("5 - Delete recipe");
+            Console.WriteLine("6 - Close recipe book");
             Console.WriteLine("Please enter an operation -->");
             Option = int.Parse(Console.ReadLine());
 
@@ -57,6 +59,9 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                     break;
                 case 5:
                     DeleteRecipe();
+                    break;
+                case 6:
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Invalid option!");
@@ -136,7 +141,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 Console.WriteLine("Steps:");
                 for (int i = 0; i < nrSteps; i++)
                 {
-                    Console.WriteLine(SDescr[i]);
+                    Console.WriteLine($"1: {SDescr[i]}");
                 }
                 Console.WriteLine();
             }
@@ -197,7 +202,17 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
         public static void DeleteRecipe()
         {
+            nrIngr = default(int);
+            IName = default(string[]);
+            IQuantity = default(int[]);
+            IUMeasure = default(string[]);
+            nrSteps = default(int);
+            SDescr = default(string[]);
+            TempQuantity = default(int[]);
+            RecipeName = default(string);
+            RecipeSaved = false;
 
+            Menu();
         }
     }
 }
