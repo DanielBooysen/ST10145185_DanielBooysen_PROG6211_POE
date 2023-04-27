@@ -26,10 +26,12 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             Menu();
         }
 
+        //Menu method for the user to input an oppperation for the system to perform
         public static void Menu()
         {
             int Option;
 
+            //Print out the menu 
             Console.WriteLine();
             Console.WriteLine("-------------------------------");
             Console.WriteLine("Welcome to your recipe book!");
@@ -43,6 +45,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             Console.WriteLine("Please enter an operation -->");
             Option = int.Parse(Console.ReadLine());
 
+            //Switch case statement to check user selection and run appropriate method
             switch (Option)
             {
                 case 1:
@@ -70,8 +73,10 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             }
         }
 
+        //Method for the user to input the details of the recipe
         public static void EnterRecipe()
         {
+            //User input to get the initial details of the recipe
             RecipeSaved = true;
             Console.WriteLine("Enter recipe name -->");
             RecipeName = Console.ReadLine();
@@ -89,6 +94,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
             Console.WriteLine();
 
+            //For loop for the user to input the ingredients in the recipe
             for (int i = 0; i < nrIngr; i++)
             {
                 Console.WriteLine($"Ingredient nr.{i + 1}");
@@ -105,6 +111,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 Console.WriteLine();
             }
 
+            //For loop for the user to enter the steps in the recipe
             for (int i = 0;i < nrSteps; i++)
             {
                 Console.WriteLine($"Enter step number {i + 1}");
@@ -113,11 +120,13 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 Console.WriteLine();
             }
 
+            //Return to the menu in case the user wants to perform more actions on the system
             Menu();
         }
 
         public static void DisplayRecipe()
         {
+            //If statement to check if a recipe has been saved
             if (RecipeSaved == false)
             {
                 Console.WriteLine();
@@ -126,6 +135,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             }
             else
             {
+                //Prints out the recipe in a readable format
                 Console.WriteLine();
                 Console.WriteLine(RecipeName);
                 Console.WriteLine("-------------------------------");
@@ -146,13 +156,16 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 Console.WriteLine();
             }
 
+            //Return to the menu in case the user wants to perform more actions on the system
             Menu();
         }
         
+        //Method to scale the recipe by either 0.5, 2 or 3
         public static void ScaleRecipe()
         {
             int OptionScale;
 
+            //Scaling menu
             Console.WriteLine("Scale Menu");
             Console.WriteLine("-------------------------------");
             Console.WriteLine("1 - Scale by half");
@@ -161,6 +174,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             Console.WriteLine("Enter an option to scale the recipe -->");
             OptionScale = int.Parse(Console.ReadLine());
 
+            //Switch case that scales the recipe based on user input
             switch (OptionScale)
             {
                 case 1:
@@ -187,9 +201,11 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                     break;
             }
 
+            //Return to the menu in case the user wants to perform more actions on the system
             Menu();
         }
 
+        //Method to reset the recipe after it has been scaled to the original values
         public static void ResetRecipe()
         {
             for (int i = 0; i < nrIngr; i++)
@@ -197,9 +213,11 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
                 IQuantity[i] = TempQuantity[i];
             }
 
+            //Return to the menu in case the user wants to perform more actions on the system
             Menu();
         }
 
+        //Method that resets all values in variables to default, essentially deleting the recipe
         public static void DeleteRecipe()
         {
             nrIngr = default(int);
@@ -212,6 +230,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             RecipeName = default(string);
             RecipeSaved = false;
 
+            //Return to the menu in case the user wants to perform more actions on the system
             Menu();
         }
     }
