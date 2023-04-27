@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
         private static string[] IUMeasure;
         private static int nrSteps;
         private static string[] SDescr;
+        private static int[] TempQuantity;
         private static string RecipeName;
         private static Boolean RecipeSaved = false;
 
@@ -73,6 +76,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             IName = new string[nrIngr];
             IQuantity = new int[nrIngr];
             IUMeasure = new string[nrIngr];
+            TempQuantity = new int[nrIngr];
 
             Console.WriteLine("Enter the number of steps in the recipe");
             nrSteps = int.Parse(Console.ReadLine());
@@ -91,6 +95,7 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
                 Console.WriteLine("Enter the quantity");
                 IQuantity[i] = int.Parse(Console.ReadLine());
+                TempQuantity[i] = IQuantity[i];
 
                 Console.WriteLine();
             }
@@ -138,15 +143,56 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
 
             Menu();
         }
-
+        
         public static void ScaleRecipe()
         {
+            int OptionScale;
 
+            Console.WriteLine("Scale Menu");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("1 - Scale by half");
+            Console.WriteLine("2 - Scale by double");
+            Console.WriteLine("3 - Scale by triple");
+            Console.WriteLine("Enter an option to scale the recipe -->");
+            OptionScale = int.Parse(Console.ReadLine());
+
+            switch (OptionScale)
+            {
+                case 1:
+                    for (int i = 0; i < nrIngr; i++)
+                    {
+                        IQuantity[i] = (int)(IQuantity[i] * 0.5);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < nrIngr; i++)
+                    {
+                        IQuantity[i] = IQuantity[i] * 2;
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < nrIngr; i++)
+                    {
+                        IQuantity[i] = IQuantity[i] * 3;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid input!");
+                    ScaleRecipe();
+                    break;
+            }
+
+            Menu();
         }
 
         public static void ResetRecipe()
         {
+            for (int i = 0; i < nrIngr; i++)
+            {
+                IQuantity[i] = TempQuantity[i];
+            }
 
+            Menu();
         }
 
         public static void DeleteRecipe()
