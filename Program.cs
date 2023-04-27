@@ -13,11 +13,11 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
     {
         private static int nrIngr;
         private static string[] IName;
-        private static int[] IQuantity;
+        private static double[] IQuantity;
         private static string[] IUMeasure;
         private static int nrSteps;
         private static string[] SDescr;
-        private static int[] TempQuantity;
+        private static double[] TempQuantity;
         private static string RecipeName;
         private static Boolean RecipeSaved = false;
 
@@ -84,9 +84,9 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
             Console.WriteLine("Enter the number of ingredients in the recipe");
             nrIngr = int.Parse(Console.ReadLine());
             IName = new string[nrIngr];
-            IQuantity = new int[nrIngr];
+            IQuantity = new double[nrIngr];
             IUMeasure = new string[nrIngr];
-            TempQuantity = new int[nrIngr];
+            TempQuantity = new double[nrIngr];
 
             Console.WriteLine("Enter the number of steps in the recipe");
             nrSteps = int.Parse(Console.ReadLine());
@@ -222,11 +222,11 @@ namespace ST10145185_DanielBooysen_PROG6221_POE
         {
             nrIngr = default(int);
             IName = default(string[]);
-            IQuantity = default(int[]);
+            IQuantity = default(double[]);
             IUMeasure = default(string[]);
             nrSteps = default(int);
             SDescr = default(string[]);
-            TempQuantity = default(int[]);
+            TempQuantity = default(double[]);
             RecipeName = default(string);
             RecipeSaved = false;
 
