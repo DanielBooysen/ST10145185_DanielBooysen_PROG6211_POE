@@ -14,6 +14,8 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         static List<string> IFoodGroup = new List<string>();
         static List<double> TempQuantity = new List<double>();
         delegate int CheckTotalCalories(int num);
+        static string Ast = "******************************";
+        static string invInput = "Error: invalid input";
         public static void Main(string[] args)
         {
             Menu();
@@ -21,48 +23,69 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         public static void Menu()
         {
             int Option;
+            string WelcomeMsg = "Welcome to your recipe book!";
+            string option1 = "1 - Enter recipe";
+            string option2 = "2 - Display recipe";
+            string option3 = "3 - Scale recipe";
+            string option4 = "4 - Reset recipe";
+            string option5 = "5 - Delete recipe";
+            string option6 = "6 - Close recipe book";
+            string prompt = "Please enter an operation -->";
+            Console.ForegroundColor = ConsoleColor.Blue;
 
             //Print out the menu 
             Console.WriteLine();
-            Console.WriteLine("-------------------------------");
-            Console.WriteLine("Welcome to your recipe book!");
-            Console.WriteLine("-------------------------------");
-            Console.WriteLine("1 - Enter recipe");
-            Console.WriteLine("2 - Display recipe");
-            Console.WriteLine("3 - Scale recipe");
-            Console.WriteLine("4 - Reset recipe");
-            Console.WriteLine("5 - Delete recipe");
-            Console.WriteLine("6 - Close recipe book");
-            Console.WriteLine("Please enter an operation -->");
-            Option = int.Parse(Console.ReadLine());
-            Console.Clear();
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Ast.Length / 2) + "}", Ast));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + WelcomeMsg.Length / 2) + "}", WelcomeMsg));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Ast.Length / 2) + "}", Ast));
+            Console.ResetColor();
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + option1.Length / 2) + "}", option1));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + option2.Length / 2) + "}", option2));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + option3.Length / 2) + "}", option3));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + option4.Length / 2) + "}", option4));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + option5.Length / 2) + "}", option5));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + option6.Length / 2) + "}", option6));
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
-            //Switch case statement to check user selection and run appropriate method
-            switch (Option)
+            //Try catch to ensure the user does not input an invalid value
+            try
             {
-                case 1:
-                    EnterRecipe();
-                    break;
-                case 2:
-                    DisplayRecipe();
-                    break;
-                case 3:
-                    ScaleRecipe();
-                    break;
-                case 4:
-                    ResetRecipe();
-                    break;
-                case 5:
-                    DeleteRecipe();
-                    break;
-                case 6:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid option!");
-                    Menu();
-                    break;
+                Option = int.Parse(Console.ReadLine());
+                switch (Option)
+                {
+                    case 1:
+                        EnterRecipe();
+                        break;
+                    case 2:
+                        DisplayRecipe();
+                        break;
+                    case 3:
+                        ScaleRecipe();
+                        break;
+                    case 4:
+                        ResetRecipe();
+                        break;
+                    case 5:
+                        DeleteRecipe();
+                        break;
+                    case 6:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                        Menu();
+                        break;
+                }
             }
+            catch
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                Menu();
+            }
+            
+            Console.Clear();
         }
 
         private static void DeleteRecipe()
@@ -195,6 +218,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
             Console.WriteLine($"Total calories: {Recipes[option].TotalCalories}");
 
             Console.ReadKey();
+            Console.Clear();
             Menu();
         }
 
