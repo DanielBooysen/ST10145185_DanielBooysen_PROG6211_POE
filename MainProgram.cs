@@ -16,6 +16,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         delegate int CheckTotalCalories(int num);
         static string Ast = "******************************";
         static string invInput = "Error: invalid input";
+        static string prompt = "Please enter an operation -->";
         public static void Main(string[] args)
         {
             Menu();
@@ -30,7 +31,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
             string option4 = "4 - Reset recipe";
             string option5 = "5 - Delete recipe";
             string option6 = "6 - Close recipe book";
-            string prompt = "Please enter an operation -->";
+            
             Console.ForegroundColor = ConsoleColor.Blue;
 
             //Print out the menu 
@@ -54,18 +55,23 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
                 switch (Option)
                 {
                     case 1:
+                        Console.Clear();
                         EnterRecipe();
                         break;
                     case 2:
+                        Console.Clear();
                         DisplayRecipe();
                         break;
                     case 3:
+                        Console.Clear();
                         ScaleRecipe();
                         break;
                     case 4:
+                        Console.Clear();
                         ResetRecipe();
                         break;
                     case 5:
+                        Console.Clear();
                         DeleteRecipe();
                         break;
                     case 6:
@@ -92,45 +98,67 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         {
             int option;
 
-            Console.WriteLine("Enter an option to delete recipe -->");
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
             for (int i = 0; i < Recipes.Count; i++)
             {
-                Console.WriteLine($"{i + 1}: {Recipes[i].RecipeName}");
+                Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + Recipes[i].RecipeName.Length / 2) + ", 0", Recipes[i].RecipeName));
             }
-            option = int.Parse(Console.ReadLine());
-            option = option - 1;
-            Console.Clear();
 
-            Recipes.RemoveAt(option);
+            try
+            {
+                option = int.Parse(Console.ReadLine());
+                option = option - 1;
+                Console.Clear();
 
-            Console.Clear();
-            Menu();
+                Recipes.RemoveAt(option);
+
+                Console.Clear();
+                Menu();
+            }
+            catch
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                DeleteRecipe();
+            }            
         }
 
         private static void ResetRecipe()
         {
             int option;
+            string ResetMsg = "Recipe reset succesfully!";
 
-            Console.WriteLine("Enter an option to reset recipe -->");
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
             for (int i = 0; i < Recipes.Count; i++)
             {
-                Console.WriteLine($"{i + 1}: {Recipes[i].RecipeName}");
+                Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + Recipes[i].RecipeName.Length / 2) + ", 0", Recipes[i].RecipeName));
             }
-            option = int.Parse(Console.ReadLine());
-            option = option - 1;
-            Console.Clear();
 
-            for (int i = 0; i < Recipes[option].IQuantity.Count; i++)
+            try
             {
-                Recipes[option].IQuantity[i] = TempQuantity[i];
+                option = int.Parse(Console.ReadLine());
+                option = option - 1;
+                Console.Clear();
+
+                for (int i = 0; i < Recipes[option].IQuantity.Count; i++)
+                {
+                    Recipes[option].IQuantity[i] = TempQuantity[i];
+                }
+
+                Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + ResetMsg.Length / 2) + ", 0", ResetMsg));
+                Console.ReadKey();
+
+                Console.Clear();
+                Menu();
             }
-
-            Console.WriteLine("Recipe reset succesfully!");
-
-            Console.Clear();
-            Menu();
+            catch
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                ResetRecipe();
+            }
         }
 
         private static void ScaleRecipe()
@@ -138,84 +166,107 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
             int option;
             int scaleOption;
 
-            Console.WriteLine("Enter an option to scale recipe -->");
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
             for (int i = 0; i < Recipes.Count; i++)
             {
-                Console.WriteLine($"{i + 1}: {Recipes[i].RecipeName}");
+                Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + Recipes[i].RecipeName.Length / 2) + ", 0", Recipes[i].RecipeName));
             }
-            option = int.Parse(Console.ReadLine());
-            option = option - 1;
-            Console.Clear();
 
-            Console.WriteLine("Enter a scale option -->");
-            Console.WriteLine("1: 0.5");
-            Console.WriteLine("2: 2");
-            Console.WriteLine("3: 3");
-            scaleOption = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < Recipes[option].IQuantity.Count; i++)
+            try
             {
-                TempQuantity.Add(Recipes[option].IQuantity[i]);
+                option = int.Parse(Console.ReadLine());
+                option = option - 1;
+                Console.Clear();
 
-                switch (scaleOption)
+                Console.WriteLine("Enter a scale option -->");
+                Console.WriteLine("1: 0.5");
+                Console.WriteLine("2: 2");
+                Console.WriteLine("3: 3");
+                scaleOption = int.Parse(Console.ReadLine());
+
+                for (int i = 0; i < Recipes[option].IQuantity.Count; i++)
                 {
-                    case 1:
-                        Recipes[option].IQuantity[i] = Recipes[option].IQuantity[i] * 0.5;
-                        break;
-                    case 2:
-                        Recipes[option].IQuantity[i] = Recipes[option].IQuantity[i] * 2;
-                        break;
-                    case 3:
-                        Recipes[option].IQuantity[i] = Recipes[option].IQuantity[i] * 3;
-                        break;
+                    TempQuantity.Add(Recipes[option].IQuantity[i]);
+
+                    switch (scaleOption)
+                    {
+                        case 1:
+                            Recipes[option].IQuantity[i] = Recipes[option].IQuantity[i] * 0.5;
+                            break;
+                        case 2:
+                            Recipes[option].IQuantity[i] = Recipes[option].IQuantity[i] * 2;
+                            break;
+                        case 3:
+                            Recipes[option].IQuantity[i] = Recipes[option].IQuantity[i] * 3;
+                            break;
+                        default:
+                            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                            ScaleRecipe();
+                            break;
+                    }
                 }
             }
-
-            Console.Clear();
-            Menu();
+            catch
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                ScaleRecipe();
+            }
         }
 
         public static void DisplayRecipe()
         {
             int option;
+            string IngrMsg = "Ingredients: ";
+            string StepsMsg = "Steps: ";
 
-            Console.WriteLine("Enter a display option -->");
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
             for (int i = 0; i < Recipes.Count; i++)
             {
-                Console.WriteLine($"{i + 1}: {Recipes[i].RecipeName}");
+                Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + Recipes[i].RecipeName.Length / 2) + ", 0", Recipes[i].RecipeName));
             }
-            option = int.Parse(Console.ReadLine());
-            option = option - 1;
-            Console.Clear();
 
-            Console.WriteLine("***********************");
-            Console.WriteLine(Recipes[option].RecipeName);
-            Console.WriteLine("***********************");
-            Console.WriteLine();
-            Console.WriteLine("Ingredients: ");
-            Console.WriteLine();
-
-            for (int i = 0; i < Recipes[option].IName.Count; i++)
+            try
             {
-                Console.WriteLine(Recipes[option].IName[i]);
-                Console.WriteLine($"{Recipes[option].IQuantity[i]} {Recipes[option].IUMeasure[i]}");
-                Console.WriteLine(Recipes[option].IFoodGroup[i]);
-                Console.WriteLine($"{Recipes[option].ICalories[i]} Calories");
+                option = int.Parse(Console.ReadLine());
+                option = option - 1;
+                Console.Clear();
+
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Ast.Length / 2) + "}", Ast));
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].RecipeName.Length / 2) + "}", Recipes[option].RecipeName));
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Ast.Length / 2) + "}", Ast));
                 Console.WriteLine();
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + IngrMsg.Length / 2) + "}", IngrMsg));
+                Console.WriteLine();
+
+                for (int i = 0; i < Recipes[option].IName.Count; i++)
+                {
+                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].IName[i].Length / 2) + "}", Recipes[option].IName[i]));
+                    Console.WriteLine(String.Format("{0, " + Console.WindowWidth / 2 +  "}", Recipes[option].IQuantity[i]));
+                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].IFoodGroup[i].Length / 2) + "}", Recipes[option].IFoodGroup[i]));
+                    Console.WriteLine(String.Format("{0, " + Console.WindowWidth / 2 + " 1}", Recipes[option].ICalories[i], "Calories"));
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + StepsMsg.Length / 2) + "}", StepsMsg));
+                Console.WriteLine();
+
+                for (int i = 0; i < Recipes[option].StepDesc.Count; i++)
+                {
+                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + StepsMsg.Length / 2) + "}", StepsMsg));
+                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].StepDesc[i].Length / 2) + "}", Recipes[option].StepDesc[i]));
+                    Console.WriteLine();
+                }
+                Console.WriteLine(String.Format("Total calories: {0, " + Console.WindowWidth / 2 + "}", Recipes[option].TotalCalories));
             }
-
-            Console.WriteLine("Steps: ");
-            Console.WriteLine();
-
-            for (int i = 0; i < Recipes[option].StepDesc.Count; i++)
+            catch
             {
-                Console.WriteLine($"Step {i + 1}");
-                Console.WriteLine(Recipes[option].StepDesc[i]);
-                Console.WriteLine();
+                Console.Clear();
+                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
+                DisplayRecipe();
             }
-            Console.WriteLine($"Total calories: {Recipes[option].TotalCalories}");
 
             Console.ReadKey();
             Console.Clear();
@@ -274,7 +325,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
 
                 CheckTotalCalories CTC = new CheckTotalCalories(CheckCal);
 
-                if (CTC(TotalCalories) == 1)
+                if (CTC(TotalCalories) == -1)
                 {
                     Console.WriteLine("Warning!");
                     Console.WriteLine("The total calories exceed 300!");
@@ -322,11 +373,11 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         {
             if (num > 300)
             {
-                num = 1;
+                num = -1;
             }
             else
             {
-                num = 0;
+                num = -2;
             }
 
             return num;
@@ -362,7 +413,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
                     IFoodGroup.Add("Fat");
                     break;
                 default:
-                    Console.WriteLine("Invalid option!");
+                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
                     EnterFoodGroup();
                     break;
             }
