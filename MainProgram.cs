@@ -67,7 +67,22 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
 
         private static void DeleteRecipe()
         {
-            throw new NotImplementedException();
+            int option;
+
+            Console.WriteLine("Enter an option to delete recipe -->");
+
+            for (int i = 0; i < Recipes.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {Recipes[i].RecipeName}");
+            }
+            option = int.Parse(Console.ReadLine());
+            option = option - 1;
+            Console.Clear();
+
+            Recipes.RemoveAt(option);
+
+            Console.Clear();
+            Menu();
         }
 
         private static void ResetRecipe()
