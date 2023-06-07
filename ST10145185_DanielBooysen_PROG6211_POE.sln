@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST10145185_DanielBooysen_PROG6211_POE", "ST10145185_DanielBooysen_PROG6211_POE.csproj", "{16DE669E-11C0-4B2B-9821-81639F03BAAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "..\UnitTesting\UnitTesting.csproj", "{8DF72969-1256-4A93-AEDD-563DBB3272EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{16DE669E-11C0-4B2B-9821-81639F03BAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16DE669E-11C0-4B2B-9821-81639F03BAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16DE669E-11C0-4B2B-9821-81639F03BAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF72969-1256-4A93-AEDD-563DBB3272EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF72969-1256-4A93-AEDD-563DBB3272EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF72969-1256-4A93-AEDD-563DBB3272EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF72969-1256-4A93-AEDD-563DBB3272EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

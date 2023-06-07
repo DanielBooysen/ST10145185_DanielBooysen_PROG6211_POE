@@ -23,7 +23,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         }
         public static void Menu()
         {
-            int Option;
+            //int Option = 0;
             string WelcomeMsg = "Welcome to your recipe book!";
             string option1 = "1 - Enter recipe";
             string option2 = "2 - Display recipe";
@@ -51,7 +51,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
             //Try catch to ensure the user does not input an invalid value
             try
             {
-                Option = int.Parse(Console.ReadLine());
+                int Option = Convert.ToInt32(Console.ReadLine());
                 switch (Option)
                 {
                     case 1:
@@ -89,8 +89,9 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
                 Console.Clear();
                 Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + invInput.Length / 2) + "}", invInput));
                 Menu();
+
             }
-            
+
             Console.Clear();
         }
 
@@ -98,12 +99,12 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         {
             int option;
 
-            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
-
             for (int i = 0; i < Recipes.Count; i++)
             {
                 Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + Recipes[i].RecipeName.Length / 2) + ", 0", Recipes[i].RecipeName));
             }
+
+            Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
             try
             {
@@ -218,15 +219,17 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
         public static void DisplayRecipe()
         {
             int option;
+            int Position = 0;
             string IngrMsg = "Ingredients: ";
             string StepsMsg = "Steps: ";
 
             Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + prompt.Length / 2) + "}", prompt));
 
-            for (int i = 0; i < Recipes.Count; i++)
-            {
-                Console.WriteLine(String.Format("{i + 1, " + (Console.WindowWidth / 2 + Recipes[i].RecipeName.Length / 2) + ", 0", Recipes[i].RecipeName));
-            }
+            foreach(var recipe in  Recipes) 
+                {
+                    Console.WriteLine($"{Position + 1} {recipe.RecipeName}");
+                    Position++;
+                }
 
             try
             {
@@ -234,32 +237,31 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
                 option = option - 1;
                 Console.Clear();
 
-                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Ast.Length / 2) + "}", Ast));
-                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].RecipeName.Length / 2) + "}", Recipes[option].RecipeName));
-                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Ast.Length / 2) + "}", Ast));
+                Console.WriteLine(Ast);
+                Console.WriteLine(Recipes[option].RecipeName);
+                Console.WriteLine(Ast);
                 Console.WriteLine();
-                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + IngrMsg.Length / 2) + "}", IngrMsg));
+                Console.WriteLine(IngrMsg);
                 Console.WriteLine();
 
                 for (int i = 0; i < Recipes[option].IName.Count; i++)
                 {
-                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].IName[i].Length / 2) + "}", Recipes[option].IName[i]));
-                    Console.WriteLine(String.Format("{0, " + Console.WindowWidth / 2 +  "}", Recipes[option].IQuantity[i]));
-                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].IFoodGroup[i].Length / 2) + "}", Recipes[option].IFoodGroup[i]));
-                    Console.WriteLine(String.Format("{0, " + Console.WindowWidth / 2 + " 1}", Recipes[option].ICalories[i], "Calories"));
+                    Console.WriteLine(Recipes[option].IName[i]);
+                    Console.WriteLine(Recipes[option].IQuantity[i]);
+                    Console.WriteLine(Recipes[option].IFoodGroup[i]);
+                    Console.WriteLine($"Calories: {Recipes[option].ICalories[i]}");
                     Console.WriteLine();
                 }
 
-                Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + StepsMsg.Length / 2) + "}", StepsMsg));
+                Console.WriteLine(StepsMsg);
                 Console.WriteLine();
 
                 for (int i = 0; i < Recipes[option].StepDesc.Count; i++)
                 {
-                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + StepsMsg.Length / 2) + "}", StepsMsg));
-                    Console.WriteLine(String.Format("{0, " + (Console.WindowWidth / 2 + Recipes[option].StepDesc[i].Length / 2) + "}", Recipes[option].StepDesc[i]));
+                    Console.WriteLine(Recipes[option].StepDesc[i]);
                     Console.WriteLine();
                 }
-                Console.WriteLine(String.Format("Total calories: {0, " + Console.WindowWidth / 2 + "}", Recipes[option].TotalCalories));
+                Console.WriteLine($"Total calories: {Recipes[option].TotalCalories}");
             }
             catch
             {
@@ -304,7 +306,9 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
 
             for (int i = 0; i < nrIngr; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Ingredient number {i + 1}");
+                Console.ResetColor();
                 Console.WriteLine("Enter the ingredient name -->");
                 IName.Add(Console.ReadLine());
                 Console.WriteLine();
@@ -327,8 +331,10 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
 
                 if (CTC(TotalCalories) == -1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Warning!");
                     Console.WriteLine("The total calories exceed 300!");
+                    Console.ResetColor();
                     Console.WriteLine("Do you wish to continue? Y = Yes N = No");
                     option = Console.ReadLine();
 
@@ -356,7 +362,9 @@ namespace ST10145185_DanielBooysen_PROG6211_POE
 
             for (int i = 0; i < nrSteps; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Enter step number {i + 1}");
+                Console.ResetColor();
                 StepDescr.Add(Console.ReadLine());
                 Console.WriteLine();
                 Console.Clear();
