@@ -1,0 +1,23 @@
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.ScaleOption"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
+        mc:Ignorable="d"
+        Title="ScaleOption" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Choose a scaling option:" Margin="5, 5" Padding="5, 5"/>
+        <RadioButton Grid.Row="1" HorizontalAlignment="Center" Content="0.5" Checked="HalfScaling_Checked" Name="HalfScaling"/>
+        <RadioButton Grid.Row="2" HorizontalAlignment="Center" Content="2" Checked="DoubleScaling_Checked" Name="DoubleScaling"/>
+        <RadioButton Grid.Row="3" HorizontalAlignment="Center" Content="3" Checked="TripleScaling_Checked" Name="TripleScaling"/>
+        <Button Grid.Row="4" Content="Submit" HorizontalAlignment="Center" Margin="5, 5" Padding="5, 5" Click="submit"/>
+    </Grid>
+</Window>

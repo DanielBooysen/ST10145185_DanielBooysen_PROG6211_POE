@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +16,18 @@ using ST10145185_DanielBooysen_PROG6211_POE;
 namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
 {
     /// <summary>
-    /// Interaction logic for ResetRecipe.xaml
+    /// Interaction logic for CreateMenu.xaml
     /// </summary>
-    public partial class ResetRecipe : Window
+    public partial class CreateMenu : Window
     {
         List<Recipe> Recipes = new List<Recipe>();
-        List<Scaling> Scalings = new List<Scaling>();
+        List<string> FoodGroups = new List<string>();
         List<string> recipeNames = new List<string>();
+        List<Recipe> Menu = new List<Recipe>();
+        List<Scaling> Scalings = new List<Scaling>();
 
         string searchOption;
-        public ResetRecipe(List<Recipe> recipes, List<Scaling> scalings)
+        public CreateMenu(List<Recipe> recipes, List<Scaling> scalings)
         {
             InitializeComponent();
             Recipes.AddRange(recipes);
@@ -39,12 +40,25 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
 
             for (int i = 0; i < recipeNames.Count; i++)
             {
-                ScalingRecipeNames _newRecipeName = new ScalingRecipeNames()
+                RecipeNamesDisplay _newRecipeName = new RecipeNamesDisplay()
                 {
-                    RecipeNames = recipeNames[i]
+                    RecipeNames = recipeNames[i],
+                    NrIngr = Recipes[i].Ingredients.Count,
+                    NrSteps = Recipes[i].StepDesc.Count
                 };
 
                 ViewRecipeNames.Items.Add(_newRecipeName);
+            }
+        }
+
+        private void add(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < Recipes.Count; i++)
+            {
+                if (Recipes[i].RecipeName == searchOption)
+                {
+                    Menu.Add(Recipes[i]);
+                }
             }
         }
 
@@ -53,34 +67,18 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
             searchOption = RecipeNameSearch.Text;
         }
 
-        private void submit(object sender, RoutedEventArgs e)
+        private void viewMenu(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < Recipes.Count; i++)
-            {
-                if (Recipes[i].RecipeName == searchOption)
-                {
-                    for (int j = 0; j < Scalings.Count; j++)
-                    {
-                        if (Scalings[j].Index == i)
-                        {
-                            foreach (var ingr in Recipes[i].Ingredients)
-                            {
-                                ingr.ingrQuantity = ingr.ingrQuantity * Math.Pow(Scalings[j].ScaleValue, -1);
-                            }
-                        }
-                    }
-                }
-            }
-
-            MessageBox.Show("Recipe reset successfully!");
-            MainWindow mainWindow = new MainWindow(Recipes, Scalings);
-            mainWindow.Show();
+            DisplayMenu displayMenu = new DisplayMenu(Recipes, Scalings, Menu);
+            displayMenu.Show();
             Close();
         }
     }
 
-    public class ScalingRecipeNames
+    public class RecipeNamesDisplayForMenu
     {
         public string? RecipeNames { get; set; }
+        public int NrIngr { get; set; }
+        public int NrSteps { get; set; }
     }
 }

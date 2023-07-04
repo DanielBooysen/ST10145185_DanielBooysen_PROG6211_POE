@@ -22,6 +22,7 @@
         <Button Grid.Row="3" Content="Scale Recipe" Padding="5, 10" Margin="350, 10" Click="scaleRecipe"/>
         <Button Grid.Row="4" Content="Reset Recipe" Padding="5, 10" Margin="350, 10" Click="resetRecipe"/>
         <Button Grid.Row="5" Content="Delete Recipe" Padding="5, 10" Margin="350, 10" Click="deleteRecipe"/>
-        <Button Grid.Row="6" Content="Close Recipe Book" Padding="5, 10" Margin="335, 10" Click="closeRecipeBook"/>
+        <Button Grid.Row="6" Content="Create Menu" Padding="5, 10" Margin="350, 10" Click="createMenu"/>
+        <Button Grid.Row="0" HorizontalAlignment="Right" Content="Close Recipe Book" Padding="5, 10" Margin="5, 5" Click="closeRecipeBook"/>
     </Grid>
 </Window>

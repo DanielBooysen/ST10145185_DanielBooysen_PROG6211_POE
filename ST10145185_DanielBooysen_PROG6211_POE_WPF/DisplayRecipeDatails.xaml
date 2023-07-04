@@ -41,7 +41,7 @@
             <ListView Grid.Column="1" x:Name="StepsView" ItemsSource="{Binding StepsDisplay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Steps" DisplayMemberBinding="{Binding StepDescr}"/>
+                        <GridViewColumn Header="Steps:" DisplayMemberBinding="{Binding StepDescr}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

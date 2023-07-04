@@ -1,22 +1,17 @@
-﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.DisplayRecipe"
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.DisplayMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
         mc:Ignorable="d"
-        Title="DisplayRecipe" Height="450" Width="800">
+        Title="DisplayMenu" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Enter the recipe name to search for:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Center"/>
-        <TextBox Grid.Row="1" HorizontalAlignment="Center" Margin="5, 5" Width="200" Name="RecipeNameSearch" TextChanged="RecipeNameSearch_TextChanged"/>
-        <Button Grid.Row="2" Content="Submit" HorizontalAlignment="Center" Margin="5, 5" Padding="5, 5" Click="submit"/>
-        <ListView Grid.Row="3" x:Name="ViewRecipeNames" ItemsSource="{Binding RecipeNamesDisplay}">
+        <ListView Grid.Row="0" x:Name="ViewRecipeNames" ItemsSource="{Binding DisplayMenuContents}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Saved Recipes:" Width="150" DisplayMemberBinding="{Binding RecipeNames}"/>
@@ -25,5 +20,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Grid.Row="1" Content="Return to menu" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Right" Click="Button_Click"/>
     </Grid>
 </Window>

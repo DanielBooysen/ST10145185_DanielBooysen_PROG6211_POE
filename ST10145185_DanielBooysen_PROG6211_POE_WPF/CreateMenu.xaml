@@ -1,11 +1,11 @@
-﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.DisplayRecipe"
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.CreateMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
         mc:Ignorable="d"
-        Title="DisplayRecipe" Height="450" Width="800">
+        Title="CreateMenu" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -13,10 +13,17 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Enter the recipe name to search for:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Text="Enter the recipe name to add to menu:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Center"/>
         <TextBox Grid.Row="1" HorizontalAlignment="Center" Margin="5, 5" Width="200" Name="RecipeNameSearch" TextChanged="RecipeNameSearch_TextChanged"/>
-        <Button Grid.Row="2" Content="Submit" HorizontalAlignment="Center" Margin="5, 5" Padding="5, 5" Click="submit"/>
-        <ListView Grid.Row="3" x:Name="ViewRecipeNames" ItemsSource="{Binding RecipeNamesDisplay}">
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Add Recipe" HorizontalAlignment="Right" Margin="5, 5" Padding="5, 5" Click="add"/>
+            <Button Grid.Column="1" Content="View Menu" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5" Click="viewMenu"/>
+        </Grid>
+        <ListView Grid.Row="3" x:Name="ViewRecipeNames" ItemsSource="{Binding RecipeNamesDisplayForMenu}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Saved Recipes:" Width="150" DisplayMemberBinding="{Binding RecipeNames}"/>

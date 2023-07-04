@@ -10,7 +10,7 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
     {
         public string ingrName;
         public string ingrUMeasure;
-        public int ingrQuantity;
+        public double ingrQuantity;
         public int ingrCalories;
         public string ingrFoodGroup;
 

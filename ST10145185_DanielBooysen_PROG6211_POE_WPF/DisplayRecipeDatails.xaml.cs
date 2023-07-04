@@ -20,8 +20,10 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
     /// </summary>
     public partial class DisplayRecipeDatails : Window
     {
-        static Recipe DisplayRecipe;
+        static Recipe? DisplayRecipe;
         List<Recipe> Recipes = new List<Recipe>();
+
+        int StepNr = 0;
         public DisplayRecipeDatails(Recipe recipe, List<Recipe> RecipeList)
         {
             InitializeComponent();
@@ -60,9 +62,10 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
             {
                 StepsDisplay _newStep = new StepsDisplay()
                 {
-                    StepDescr = steps[i].Description
+                    StepDescr = $"{StepNr}: {steps[i].Description}"
                 };
 
+                StepNr++;
                 StepsView.Items.Add(_newStep);
             }
         }
@@ -77,15 +80,15 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
 
     class IngredientsDisplay
     {
-        public string Name { get; set; }
-        public string UMeasure { get; set; }
-        public int Quantity { get; set; }
+        public string? Name { get; set; }
+        public string? UMeasure { get; set; }
+        public double Quantity { get; set; }
         public int Calories { get; set; }
-        public string FoodGroup { get; set; }
+        public string? FoodGroup { get; set; }
     }
 
     class StepsDisplay
     {
-        public string StepDescr { get; set; }
+        public string? StepDescr { get; set; }
     }
 }

@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="ResetRecipe" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Enter the recipe name to search for:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="1" HorizontalAlignment="Center" Margin="5, 5" Width="200" Name="RecipeNameSearch" TextChanged="RecipeNameSearch_TextChanged"/>
+        <Button Grid.Row="2" Content="Submit" HorizontalAlignment="Center" Margin="5, 5" Padding="5, 5" Click="submit"/>
+        <ListView Grid.Row="3" x:Name="ViewRecipeNames" ItemsSource="{Binding ScalingRecipeNames}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Saved Recipes:" DisplayMemberBinding="{Binding RecipeNames}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

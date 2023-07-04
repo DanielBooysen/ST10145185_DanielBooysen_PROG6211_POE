@@ -37,7 +37,9 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
             {
                 RecipeNamesDisplay _newRecipeName = new RecipeNamesDisplay()
                 {
-                    RecipeNames = recipeNames[i]
+                    RecipeNames = recipeNames[i],
+                    NrIngr = Recipes[i].Ingredients.Count,
+                    NrSteps = Recipes[i].StepDesc.Count
                 };
 
                 ViewRecipeNames.Items.Add(_newRecipeName);
@@ -65,6 +67,8 @@ namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
 
     public class RecipeNamesDisplay
     {
-        public string RecipeNames { get; set; }
+        public string? RecipeNames { get; set; }
+        public int NrIngr { get; set; }
+        public int NrSteps { get; set; }
     }
 }

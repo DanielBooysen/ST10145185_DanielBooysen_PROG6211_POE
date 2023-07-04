@@ -16,44 +16,45 @@ using ST10145185_DanielBooysen_PROG6211_POE;
 namespace ST10145185_DanielBooysen_PROG6211_POE_WPF
 {
     /// <summary>
-    /// Interaction logic for DeleteRecipe.xaml
+    /// Interaction logic for DisplayMenu.xaml
     /// </summary>
-    public partial class DeleteRecipe : Window
+    public partial class DisplayMenu : Window
     {
         List<Recipe> Recipes = new List<Recipe>();
         List<Scaling> Scalings = new List<Scaling>();
-
-        string searchOption;
-        public DeleteRecipe(List<Recipe> recipes, List<Scaling> scalings)
+        List<Recipe> Menu = new List<Recipe>();
+        public DisplayMenu(List<Recipe> recipes, List<Scaling> scalings, List<Recipe> menu)
         {
             InitializeComponent();
             Recipes.AddRange(recipes);
             Scalings.AddRange(scalings);
-        }
+            Menu.AddRange(menu);
 
-        private void RecipeNameSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            searchOption = RecipeNameSearch.Text;
-        }
-
-        private void submit(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < Recipes.Count; i++)
+            for (int i = 0; i < Menu.Count; i++)
             {
-                if (Recipes[i].RecipeName.Equals(searchOption))
+                RecipeNamesDisplay _newRecipeName = new RecipeNamesDisplay()
                 {
-                    Recipes.RemoveAt(i);
-                }
-            }
+                    RecipeNames = Menu[i].RecipeName,
+                    NrIngr = Recipes[i].Ingredients.Count,
+                    NrSteps = Recipes[i].StepDesc.Count
+                };
 
+                ViewRecipeNames.Items.Add(_newRecipeName);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             MainWindow mainWindow = new MainWindow(Recipes, Scalings);
             mainWindow.Show();
             Close();
         }
     }
 
-    public class DeleteRecipeNames
+    public class DisplayMenuContents
     {
         public string RecipeNames { get; set; }
+        public int NrIngr { get; set; }
+        public int NrSteps { get; set; }
     }
 }

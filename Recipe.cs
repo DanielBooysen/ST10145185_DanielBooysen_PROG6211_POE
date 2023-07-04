@@ -1,5 +1,6 @@
 ﻿using ST10145185_DanielBooysen_PROG6211_POE_WPF;
 using System.Collections.Generic;
+using ST10145185_DanielBooysen_PROG6211_POE;
 
 namespace ST10145185_DanielBooysen_PROG6211_POE
 {
