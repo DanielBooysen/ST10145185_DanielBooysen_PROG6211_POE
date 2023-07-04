@@ -9,4 +9,4 @@ How to run the project:
 3. Open Visual Studio Code
 4. Select "Open Project"
 5. Select the unzipped project
-6. Run the "MainProgram" class
+6. Run the ST10145185_DanielBooysen_PROG6211_POE_WPF file
