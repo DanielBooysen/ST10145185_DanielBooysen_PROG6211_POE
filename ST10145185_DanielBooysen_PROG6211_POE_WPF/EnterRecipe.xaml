@@ -1,0 +1,27 @@
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.EnterRecipe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
+        mc:Ignorable="d"
+        Title="EnterRecipe" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Recipe Name:" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5"/>
+        <TextBox Grid.Row="1" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Margin="5, 1" Height="20" TextChanged="RecipeNameInput" Name="InputRecipeName"/>
+        <TextBlock Grid.Row="2" Text="Number of ingredients:" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5"/>
+        <TextBox Grid.Row="3" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Margin="5, 1" Height="20" TextChanged="NumberIngrInput" Name="InputNumberIngr"/>
+        <TextBlock Grid.Row="4" Text="Number of steps:" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5"/>
+        <TextBox Grid.Row="5" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Margin="5, 1" Height="20" TextChanged="NumberStepsInput" Name="InputNumberSteps"/>
+        <Button Grid.Row="6" Content="Submit" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5" Click="submit"/>
+    </Grid>
+</Window>

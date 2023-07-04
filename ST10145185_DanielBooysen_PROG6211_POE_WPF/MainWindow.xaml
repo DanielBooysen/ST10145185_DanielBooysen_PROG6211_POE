@@ -1,0 +1,27 @@
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Main Menu" TextDecorations="Underline" Padding="5, 10" FontSize="30"/>
+        <Button Grid.Row="1" Content="Enter Recipe" Padding="5, 10" Margin="350, 10" Click="enterRecipe"/>
+        <Button Grid.Row="2" Content="Display Recipe" Padding="5, 10" Margin="345, 10" Click="displayRecipe"/>
+        <Button Grid.Row="3" Content="Scale Recipe" Padding="5, 10" Margin="350, 10" Click="scaleRecipe"/>
+        <Button Grid.Row="4" Content="Reset Recipe" Padding="5, 10" Margin="350, 10" Click="resetRecipe"/>
+        <Button Grid.Row="5" Content="Delete Recipe" Padding="5, 10" Margin="350, 10" Click="deleteRecipe"/>
+        <Button Grid.Row="6" Content="Close Recipe Book" Padding="5, 10" Margin="335, 10" Click="closeRecipeBook"/>
+    </Grid>
+</Window>

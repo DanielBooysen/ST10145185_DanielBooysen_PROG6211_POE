@@ -1,0 +1,19 @@
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.EnterStepDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
+        mc:Ignorable="d"
+        Title="EnterStepDetails" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Enter the step description:" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5"/>
+        <TextBox Grid.Row="1" Width="500" Height="100" HorizontalAlignment="Left" Margin="5, 5" BorderBrush="Black" Name="StepDescrInput" TextChanged="StepDescrInput_TextChanged"/>
+        <Button Grid.Row="2" Content="Submit" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5" Click="submit"/>
+    </Grid>
+</Window>

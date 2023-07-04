@@ -1,0 +1,50 @@
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.DisplayRecipeDatails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
+        mc:Ignorable="d"
+        Title="Recipe Details" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Recipe name:" Margin="5, 5" Padding="5, 5"/>
+            <TextBox Grid.Column="1" x:Name="RecipeNameSet" Margin="5, 5" Padding="100, 5" HorizontalAlignment="Left"/>
+            <Button Grid.Column="1" Content="Return" HorizontalAlignment="Right" Margin="5, 5" Padding="5, 5" Name="ReturnToMenu" Click="ReturnToMenu_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0" x:Name="IngredientsView" ItemsSource="{Binding IngredientsDisplay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Unit of Measurement" DisplayMemberBinding="{Binding UMeasure}"/>
+                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
+                        <GridViewColumn Header="Calories" DisplayMemberBinding="{Binding Calories}"/>
+                        <GridViewColumn Header="Food Group" DisplayMemberBinding="{Binding FoodGroup}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView Grid.Column="1" x:Name="StepsView" ItemsSource="{Binding StepsDisplay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Steps" DisplayMemberBinding="{Binding StepDescr}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>

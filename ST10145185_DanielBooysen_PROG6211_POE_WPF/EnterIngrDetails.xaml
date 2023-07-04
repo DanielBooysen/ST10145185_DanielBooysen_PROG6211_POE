@@ -1,0 +1,35 @@
+﻿<Window x:Class="ST10145185_DanielBooysen_PROG6211_POE_WPF.EnterIngrDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10145185_DanielBooysen_PROG6211_POE_WPF"
+        mc:Ignorable="d"
+        Title="EnterIngrDetails" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Enter ingredient name:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="1" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Height="20" Margin="5, 1" Name="IngrNameInput" TextChanged="IngrNameInput_TextChanged"/>
+        <TextBlock Grid.Row="2" Text="Enter Unit of Measurement:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="3" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Height="20" Margin="5, 1" Name="IngrUMeasureInput" TextChanged="IngrUMeasureInput_TextChanged"/>
+        <TextBlock Grid.Row="4" Text="Enter Quantity:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="5" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Height="20" Margin="5, 1" Name="IngrQuantityInput" TextChanged="IngrQuantityInput_TextChanged"/>
+        <TextBlock Grid.Row="6" Text="Enter Number of Calories:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="7" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Height="20" Margin="5, 1" Name="IngrCaloriesInput" TextChanged="IngrCaloriesInput_TextChanged"/>
+        <TextBlock Grid.Row="8" Text="Enter Ingredient Food Group:" Margin="5, 5" Padding="5, 5" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="9" BorderBrush="Black" HorizontalAlignment="Left" Width="200" Height="20" Margin="5, 1" Name="IngrFoodGroupInput" TextChanged="IngrFoodGroupInput_TextChanged"/>
+        <Button Grid.Row="10" Content="Submit" HorizontalAlignment="Left" Margin="5, 5" Padding="5, 5" Click="submit"/>
+    </Grid>
+</Window>
