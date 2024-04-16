@@ -10,5 +10,3 @@ How to run the project:
 4. Select "Open Project"
 5. Select the unzipped project
 6. Run the ST10145185_DanielBooysen_PROG6211_POE_WPF file
-
-Github link: https://github.com/DanielBooysen/ST10145185_DanielBooysen_PROG6211_POE.git
